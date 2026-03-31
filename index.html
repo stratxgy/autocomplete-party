@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autocomplete Party</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/host.css">
+</head>
+<body>
+
+<!-- LOBBY SCREEN -->
+<div id="screen-lobby" class="screen active">
+  <div class="lobby-bg-grid"></div>
+  <div class="lobby-content">
+    <div class="logo">AUTO<span>COMPLETE</span></div>
+    <div class="lobby-main">
+      <div class="join-box">
+        <div class="join-url">stratxgy.dev/autocomplete-party/join.html</div>
+        <div class="room-code" id="lobby-code">----</div>
+        <div class="join-hint">or scan the QR code</div>
+        <div id="qr-container" class="qr-placeholder">
+          <div class="qr-inner" id="qr-code"></div>
+        </div>
+      </div>
+      <div class="lobby-right">
+        <div class="player-count-label">Players joined</div>
+        <div class="player-list" id="lobby-player-list">
+          <div class="waiting-text">Waiting for players...</div>
+        </div>
+        <button class="btn-start" id="btn-start" disabled onclick="hostStartGame()">
+          Start Game
+        </button>
+        <div class="min-players-note">Need at least 2 players</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GAME SCREEN -->
+<div id="screen-game" class="screen">
+  <div class="game-header">
+    <div class="game-logo">AUTO<span>COMPLETE</span></div>
+    <div class="round-indicator" id="round-indicator">Round 1 / 5</div>
+    <div class="scores-mini" id="scores-mini"></div>
+  </div>
+
+  <div class="search-section">
+    <div class="prompt-label">People search for...</div>
+    <div class="search-bar-display">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <span id="search-keyword" class="search-keyword"></span>
+      <span class="search-cursor-host"></span>
+    </div>
+  </div>
+
+  <div class="answers-grid" id="answers-grid"></div>
+
+  <div class="host-bottom">
+    <div class="wrong-counter" id="wrong-counter"></div>
+  </div>
+</div>
+
+<!-- ROUND TRANSITION -->
+<div id="screen-transition" class="screen">
+  <div class="transition-content">
+    <div class="transition-label">Round complete!</div>
+    <div class="transition-scores" id="transition-scores"></div>
+  </div>
+</div>
+
+<!-- RESULTS SCREEN -->
+<div id="screen-results" class="screen">
+  <div class="results-content">
+    <div class="results-title">Game Over!</div>
+    <div class="podium" id="podium"></div>
+    <div class="results-list" id="results-list"></div>
+    <button class="btn-start" onclick="location.reload()">Play Again</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/questions.js"></script>
+<script src="js/host.js"></script>
+</body>
+</html>
