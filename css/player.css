@@ -1,0 +1,449 @@
+/* PLAYER MOBILE CSS */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #13131a;
+  --surface2: #1a1a24;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.15);
+  --text: #f0f0f5;
+  --text2: #9090a8;
+  --accent: #7c6af7;
+  --accent2: #a89cf7;
+  --green: #4ecdc4;
+  --red: #ff6b6b;
+  --yellow: #ffe66d;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── SCREENS ───────────────────────────────────────────────────── */
+.pscreen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 20px;
+  gap: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.pscreen.active { display: flex; }
+
+/* ─── LOGO ──────────────────────────────────────────────────────── */
+.p-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  align-self: flex-start;
+}
+.p-logo span { color: var(--accent); }
+
+/* ─── CARD ──────────────────────────────────────────────────────── */
+.p-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  padding: 28px 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.p-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ─── JOIN ──────────────────────────────────────────────────────── */
+.p-input {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+.p-input:focus { border-color: var(--accent); }
+.p-input::placeholder { color: var(--text2); }
+
+.p-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+.p-btn:active { transform: scale(0.98); }
+
+.p-error {
+  font-size: 0.85rem;
+  color: var(--red);
+  text-align: center;
+  min-height: 20px;
+}
+
+/* ─── STATUS ────────────────────────────────────────────────────── */
+.p-status {
+  font-size: 1rem;
+  color: var(--text2);
+}
+
+.p-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--border2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── WAITING ───────────────────────────────────────────────────── */
+.player-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  align-self: center;
+}
+
+.p-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.p-status-text {
+  font-size: 0.9rem;
+  color: var(--text2);
+  text-align: center;
+}
+
+.p-players-joined {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  min-height: 30px;
+}
+
+.pchip {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+/* ─── GAME ──────────────────────────────────────────────────────── */
+#screen-guessing {
+  padding: 0;
+  justify-content: flex-start;
+  gap: 0;
+}
+
+.p-game-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.p-round {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.p-score {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent2);
+}
+
+.p-search-prompt {
+  width: 100%;
+  padding: 16px 20px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.p-prompt-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.p-keyword {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent2);
+  font-family: 'Syne', sans-serif;
+}
+
+.p-guess-area {
+  flex: 1;
+  width: 100%;
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.p-hint-strip {
+  font-size: 0.78rem;
+  color: var(--yellow);
+  background: rgba(255,230,109,0.08);
+  border: 1px solid rgba(255,230,109,0.2);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: none;
+}
+
+.p-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.p-guess-field {
+  flex: 1;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.p-guess-field:focus { border-color: var(--accent); }
+.p-guess-field::placeholder { color: var(--text2); }
+.p-guess-field:disabled { opacity: 0.4; }
+
+.p-send-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  width: 48px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.p-send-btn:active { transform: scale(0.95); }
+.p-send-btn:disabled { opacity: 0.35; }
+
+.p-guesses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.p-guess-bubble {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  animation: bubbleIn 0.2s ease;
+}
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.p-guess-bubble.correct {
+  background: rgba(78,205,196,0.12);
+  border: 1px solid rgba(78,205,196,0.3);
+  color: var(--green);
+}
+.p-guess-bubble.wrong {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  text-decoration: line-through;
+}
+.p-guess-bubble.duplicate {
+  background: rgba(255,230,109,0.06);
+  border: 1px solid rgba(255,230,109,0.2);
+  color: var(--yellow);
+  font-size: 0.8rem;
+}
+.p-guess-bubble.pending {
+  background: rgba(124,106,247,0.08);
+  border: 1px solid rgba(124,106,247,0.2);
+  color: var(--accent2);
+  opacity: 0.7;
+}
+
+.bubble-icon { font-size: 0.85rem; flex-shrink: 0; }
+.bubble-text { flex: 1; }
+.bubble-pts { font-weight: 600; font-size: 0.82rem; }
+
+.p-answers-found {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.p-found-label { font-size: 0.8rem; color: var(--text2); }
+.p-found-count { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--green); }
+
+/* ─── ROUND END ──────────────────────────────────────────────────── */
+.p-round-result {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text2);
+  text-align: center;
+}
+
+.p-score-big {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent2);
+  text-align: center;
+}
+
+/* ─── ANSWERS REVEAL ─────────────────────────────────────────────── */
+.p-answers-reveal {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.p-answer-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  padding: 6px 10px;
+  background: var(--surface2);
+  border-radius: 8px;
+}
+
+.p-answer-num {
+  font-weight: 700;
+  color: var(--text2);
+  min-width: 18px;
+}
+
+.p-answer-text { color: var(--text); }
+
+/* ─── READY COUNT ────────────────────────────────────────────────── */
+.p-ready-count {
+  font-size: 0.82rem;
+  color: var(--text2);
+  text-align: center;
+  min-height: 20px;
+}
+
+/* ─── TOASTS ─────────────────────────────────────────────────────── */
+.p-toast {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-60px);
+  background: var(--surface);
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 100;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+.p-toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ─── SCORE FLASH ────────────────────────────────────────────────── */
+.flash-red {
+  animation: flashRed 0.5s ease;
+}
+@keyframes flashRed {
+  0% { color: var(--accent2); }
+  40% { color: var(--red); }
+  100% { color: var(--accent2); }
+}
+.p-final-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.p-final-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid;
+  background: var(--surface2);
+}
+
+.p-final-row.is-me {
+  background: rgba(124,106,247,0.1);
+  border-color: rgba(124,106,247,0.3) !important;
+}
+
+.p-final-medal { font-size: 1.2rem; }
+.p-final-name { flex: 1; font-weight: 500; }
+.p-final-pts { font-size: 0.85rem; font-weight: 600; color: var(--text2); }
