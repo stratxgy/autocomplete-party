@@ -61,7 +61,7 @@ function joinGame() {
     debug: 0,
     host: 'autocomplete-peerserver.onrender.com',
     port: 443,
-    path: '/peerjs',
+    path: '/',
     secure: true
   });
 
