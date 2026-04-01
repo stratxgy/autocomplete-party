@@ -28,7 +28,7 @@ function initHost() {
     debug: 0,
     host: 'autocomplete-peerserver.onrender.com',
     port: 443,
-    path: '/peerjs',
+    path: '/',
     secure: true
   });
 
@@ -55,6 +55,8 @@ function initHost() {
   peer.on('error', err => {
     if (err.type === 'unavailable-id') { peer.destroy(); initHost(); return; }
     console.error('Peer error:', err);
+    const el = document.getElementById('lobby-code');
+    if (el) el.textContent = 'ERR: ' + err.type;
   });
 }
 
